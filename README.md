@@ -92,7 +92,7 @@ _注：实际性能提升因使用场景和配置而异。欢迎留言反馈问�
 ### cURL 示例
 
 ```bash
-curl http://127.0.0.1:3000/v1/chat/completions/chat/completions \
+curl http://127.0.0.1:3000/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer sk-xxx" \
   -d '{
