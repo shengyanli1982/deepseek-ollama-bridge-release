@@ -18,9 +18,9 @@ DeepSeek-Ollama Bridge 采用标准的 OpenAI API 协议，支持与各类主流
 
 **云服务型平台**
 
--   Gemini：Google 新一代 AI 模型服务
+-   Gemini：Google AI 模型服务
 -   Claude：Anthropic 开发的高性能助手
--   GPT-4：OpenAI 最新一代大语言模型
+-   GPT-4o：OpenAI 大语言模型
 
 此外，任何支持 OpenAI API 协议的模型服务都可以通过本代理进行访问和管理。这种广泛的兼容性让您能够灵活选择最适合的 AI 模型，同时享受统一的接口体验和性能优化。
 
