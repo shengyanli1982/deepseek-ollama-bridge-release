@@ -11,6 +11,14 @@
 -   集群中有充足的计算资源配额
 -   已完成 ghcr.io 的访问授权配置
 
+## 拉取镜像
+
+这个步骤不是必须的，如果单独需要使用 ghcr.io 的镜像，请参考以下命令：
+
+```bash
+docker pull ghcr.io/shengyanli1982/deepseek-ollama-bridge:v0.1.15
+```
+
 ## 部署流程
 
 ### 1. 配置镜像仓库访问凭证
