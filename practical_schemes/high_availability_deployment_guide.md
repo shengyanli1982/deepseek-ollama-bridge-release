@@ -127,31 +127,6 @@
     }
     ```
 
-2. **Keepalived 高可用配置**
-
-    ```bash
-    # keepalived.conf - 确保 Nginx 永不掉线
-    vrrp_script check_nginx {
-        script "pidof nginx"    # 检查 Nginx 是否运行
-        interval 2             # 每2秒检查一次
-        weight 2              # 权重设置
-    }
-
-    vrrp_instance VI_1 {
-        state MASTER          # 主节点设置
-        interface eth0        # 网络接口
-        virtual_router_id 51  # 路由器 ID
-        priority 100         # 优先级设置
-        authentication {
-            auth_type PASS
-            auth_pass your_password  # 认证密码
-        }
-        virtual_ipaddress {
-            192.168.1.100    # 虚拟 IP 地址
-        }
-    }
-    ```
-
 #### 2.2 实例管理与监控
 
 1. **Supervisor 进程守护配置**
