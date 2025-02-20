@@ -77,6 +77,10 @@ DeepSeek-Ollama Bridge 是一款专为 DeepSeek 模型打造的高性能代理�
 
 可以阅读 `docs` 目录下的文档，了解 DeepSeek-Ollama Bridge 的详细使用方法。
 
+### 📁 实用方案
+
+可以阅读 `practical_schemes` 目录下的文档，了解 DeepSeek-Ollama Bridge 的实用方案。
+
 ### 📝 版本更新
 
 可以阅读 `CHANGLOG.md` 文件，了解 DeepSeek-Ollama Bridge 的版本更新历史。
