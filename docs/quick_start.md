@@ -75,7 +75,7 @@ Options:
       --cache-ttl <CACHE_TTL>
           Cache entry time-to-live in seconds for automatic expiration (range: 30-86400) [default: 300]
       --cache-max-entries <CACHE_MAX_ENTRIES>
-          Maximum number of cache entries to maintain in storage (range: 100-1000000) [default: 65535]
+          Maximum number of cache entries to maintain in storage (range: 3000-1000000) [default: 65535]
       --disable-think-filter
           Disable think-tag filtering for DeepSeek R1 responses (default: enabled)
       --req-rate-limit <REQ_RATE_LIMIT>
@@ -146,7 +146,7 @@ DeepSeek-Ollama Bridge 提供了一套完整的配置参数，让你能够根据
     - 使用示例：`--cache-ttl 3600`
 
 8. **缓存容量限制 (--cache-max-entries)**
-    - 可选范围：100-1000000 条
+    - 可选范围：3000-1000000 条
     - 默认配置：65535 条
     - 功能说明：限定缓存条目的最大数量，超出限制时将启用 LRU 清理机制
     - 使用示例：`--cache-max-entries 100000`
