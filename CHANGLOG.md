@@ -1,4 +1,4 @@
--   **0.1.16 版本**：
+-   **0.1.16-rc1 版本**：
 
     -   增加 Luajit 运行时，支持 LuaJIT 脚本运行。
     -   增加 Luajit 运行相关 Prometheus 指标。
