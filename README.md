@@ -145,12 +145,28 @@ _注：实际性能提升因使用场景和配置而异。欢迎留言反馈问�
 
 ```lua
 -- 处理请求
+-- @param request table 请求对象
+--   - request.path string 请求路径 (例如: "/api/users")
+--   - request.method string 请求方法 (例如: "GET", "POST")
+--   - request.headers table 请求头
+--     - 键为小写的header名称 (例如: "content-type", "authorization")
+--     - 值为对应的header值
+--   - request.body string 请求体内容
+-- @return boolean, table 返回两个值:
+--   1. boolean:
+--      - true: 继续处理请求
+--      - false: 拦截请求，返回自定义响应
+--   2. table:
+--      当第一个返回值为 true 时:
+--        - 返回修改后的 request 表
+--      当第一个返回值为 false 时:
+--        - status_code number HTTP状态码
+--        - body string 响应体
+--        - headers table 响应头
 function HandleServerRequest(request)
-    -- request 表包含：
-    -- request.path: 请求路径
-    -- request.method: 请求方法
-    -- request.headers: 请求头
-    -- request.body: 请求体
+
+    -- 示例：记录请求
+    print("Handling request to: " .. request.path)
 
     -- 示例：修改请求头
     request.headers["x-modified-by"] = "Lua-Middleware-Request"
@@ -171,11 +187,17 @@ function HandleServerRequest(request)
 end
 
 -- 处理响应
+-- @param response table 响应对象
+--   - response.status_code number HTTP状态码 (例如: 200, 404)
+--   - response.headers table 响应头
+--     - 键为小写的header名称 (例如: "content-type")
+--     - 值为对应的header值
+--   - response.body string 响应体内容
+-- @return table 返回修改后的响应对象
+--   - status_code number 修改后的HTTP状态码
+--   - headers table 修改后的响应头
+--   - body string 修改后的响应体内容
 function HandleServerResponse(response)
-    -- response 表包含：
-    -- response.status_code: 状态码
-    -- response.headers: 响应头
-    -- response.body: 响应体
 
     -- 示例：添加响应头
     response.headers["x-powered-by"] = "Lua-Middleware-Response"
@@ -188,6 +210,7 @@ function HandleServerResponse(response)
         response.body = response.body .. "\n(Modified by Lua)"
     end
 
+    -- 返回修改后的响应对象
     return response
 end
 ```
