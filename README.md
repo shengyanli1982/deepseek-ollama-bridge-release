@@ -20,7 +20,7 @@ DeepSeek-Ollama Bridge 是一款专为 DeepSeek 模型打造的高性能代理�
 -   对话上下文感知，智能匹配历史应答
 -   自动化清理机制，无需人工维护
 -   灵活的缓存参数配置，轻松应对各类场景
--   注意：流式输出模式下从 v0.1.15 版本开始支持
+-   注意：流式输出模式（stream=true）从 v0.1.15 版本开始支持
 
 #### 2️ 成熟的流量控制
 
@@ -41,9 +41,15 @@ DeepSeek-Ollama Bridge 是一款专为 DeepSeek 模型打造的高性能代理�
 -   保持输出内容的专业性和连贯性
 -   零延迟处理，不影响模型响应速度
 
-#### 5️ 企业级共享模式
+#### 5️ 企业级共享模式（从 v0.1.15 版本开始）
 
 -   API Key 集中托管与管理
+
+#### 6️ LuaJIT 运行时支持（从 v0.1.16 版本开始）
+
+-   内置高性能 LuaJIT 运行时环境
+-   支持自定义 Lua 脚本扩展系统功能
+-   毫秒级响应，适用于实时处理场景
 
 ### 💪 为什么选择 DeepSeek-Ollama Bridge ？
 
@@ -104,6 +110,14 @@ DeepSeek-Ollama Bridge 是一款专为 DeepSeek 模型打造的高性能代理�
 
 ![流量控制](./images/rate-limit.png)
 
+#### 4. 企业级共享模式
+
+![企业级共享模式](./images/enterprise-mode.png)
+
+#### 5. LuaJIT 运行时
+
+![LuaJIT 运行时](./images/luajit-runtime.png)
+
 ## 🎁 快速开始
 
 只需一行命令，即可启动企业级 AI 加速服务：
@@ -116,7 +130,69 @@ deepseek-ollama-bridge --enable-cache --cache-dir ./cache
 
 _注：实际性能提升因使用场景和配置而异。欢迎留言反馈问题和改进建议。_
 
-## 💡 代码示例
+## 📦 中间件
+
+从 **v0.1.16** 版本开始，支持 LuaJIT 运行时，支持自定义 Lua 脚本扩展系统功能。
+
+-   **HandleServerRequest 函数**：处理客户端发送的请求
+-   **HandleServerResponse 函数**：处理服务端返回的响应
+
+> [!NOTE]
+>
+> 下面提供一个示例，其中 `function HandleServerRequest(request)` 和 `function HandleServerResponse(response)` 函数是必须实现的。要不然会报错，如果没有逻辑可以编写一个空函数。
+
+### plugin.lua 代码示例
+
+```lua
+-- 处理请求
+function HandleServerRequest(request)
+    -- request 表包含：
+    -- request.path: 请求路径
+    -- request.method: 请求方法
+    -- request.headers: 请求头
+    -- request.body: 请求体
+
+    -- 示例：修改请求头
+    request.headers["x-modified-by"] = "Lua-Middleware-Request"
+
+    -- 示例：拦截特定请求
+    if request.path == "/blocked" then
+        return false, {
+            status_code = 403,
+            body = "Access denied by Lua middleware",
+            headers = {
+                ["content-type"] = "text/plain"
+            }
+        }
+    end
+
+    -- 继续处理请求
+    return true, request
+end
+
+-- 处理响应
+function HandleServerResponse(response)
+    -- response 表包含：
+    -- response.status_code: 状态码
+    -- response.headers: 响应头
+    -- response.body: 响应体
+
+    -- 示例：添加响应头
+    response.headers["x-powered-by"] = "Lua-Middleware-Response"
+
+    -- 调试日志：打印Content-Type
+    print("Response Content-Type:", response.headers["content-type"])
+
+    -- 示例：修改响应体
+    if response.headers["content-type"] == "text/plain" then
+        response.body = response.body .. "\n(Modified by Lua)"
+    end
+
+    return response
+end
+```
+
+## 💡 访问代码示例
 
 ### cURL 示例
 
