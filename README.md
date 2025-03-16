@@ -215,6 +215,54 @@ function HandleServerResponse(response)
 end
 ```
 
+### 支持第三方 lua 库和 dll 和 so 文件
+
+-   支持挂载外部 lua 库
+-   支持挂载外部 dll 文件
+-   支持挂载外部 so 文件
+
+```lua
+-- plugin.lua - 主 Lua 脚本
+-- 使用自定义模块处理请求和响应
+
+-- 加载自定义模块
+local cjson = require('cjson')
+local utils = require("utils")
+
+-- 调试模式
+local DEBUG = true
+
+-- 处理服务器请求的函数
+-- 返回值：
+-- 1. 布尔值，表示是否继续处理请求（true 表示继续，false 表示拦截）
+-- 2. 请求表，如果拦截请求，可以包含自定义响应
+function HandleServerRequest(request)
+    local jsonData = {
+        name = "Alice",
+        age = 30,
+        address = {
+            city = "Shanghai",
+            zip = "200000"
+        },
+        hobbies = {"reading", "traveling", "coding"},
+        isStudent = false
+    }
+
+    local jsonBody = cjson.encode(jsonData)
+
+    print(jsonBody)
+
+    -- 继续处理请求
+    return true, request
+end
+
+-- 处理服务器响应的函数
+-- 返回值：修改后的响应表
+function HandleServerResponse(response)
+    return response
+end
+```
+
 ## 💡 访问代码示例
 
 ### cURL 示例

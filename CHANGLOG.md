@@ -1,3 +1,9 @@
+-   **0.1.16-rc2 版本**：
+
+    -   更新 Luajit 版本为 Openresty 的 luajit2（v210.5.12+a4f56a4）
+    -   增加 luajit-package-path 和 luajit-package-cpath 配置项
+    -   支持 Luajit 挂载外部 dll 和 so 文件和 lua 文件
+
 -   **0.1.16-rc1 版本**：
 
     -   增加 Luajit 运行时，支持 LuaJIT 脚本运行。
