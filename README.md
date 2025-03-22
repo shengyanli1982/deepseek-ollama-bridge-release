@@ -118,6 +118,10 @@ DeepSeek-Ollama Bridge 是一款专为 DeepSeek 模型打造的高性能代理�
 
 ![LuaJIT 运行时](./images/luajit-runtime.png)
 
+#### 6. 请求后端服务 Retry
+
+![请求后端服务 Retry](./images/http-request-retry.png)
+
 ## 🎁 快速开始
 
 只需一行命令，即可启动企业级 AI 加速服务：

@@ -1,3 +1,8 @@
+-   **0.1.16-rc3 版本**：
+
+    -   增加请求后端服务 Retry 功能，支持次数、间隔等配置。
+    -   增加请求后端服务 Retry 相关 Prometheus 指标。
+
 -   **0.1.16-rc2 版本**：
 
     -   更新 Luajit 版本为 Openresty 的 luajit2（v210.5.12+a4f56a4）
