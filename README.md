@@ -154,6 +154,58 @@ deepseek-ollama-bridge --enable-cache --cache-dir ./cache
 
 更多高级配置选项请使用 `-h` 参数查看帮助文档。
 
+**命令行参数（从 v0.1.16 版本开始）**
+
+```bash
+选项：
+  -d, --debug
+          启用详细调试日志，用于追踪请求/响应和系统诊断
+  -l, --listen <LISTEN>
+          设置服务监听的网络地址和端口（格式：主机:端口）[默认：127.0.0.1:3000]
+  -o, --ollama <OLLAMA>
+          设置 Ollama API 的基础 URL，用于请求转发（格式：http(s)://主机:端口）[默认：http://127.0.0.1:11434]
+  -t, --timeout <TIMEOUT>
+          设置每个 HTTP 请求的全局超时时间（单位：毫秒），包括连接和响应时间（范围：1000-86400000）[默认：300000]
+      --rate-limit <RATE_LIMIT>
+          设置 Ollama API 调用的每秒最大并发请求数，0 表示无限制（范围：0-65535）[默认：0]
+      --retry-attempts <RETRY_ATTEMPTS>
+          设置 Ollama API 请求失败后的最大重试次数，0 表示不重试（范围：0-1024）[默认：0]
+      --retry-min-interval <RETRY_MIN_INTERVAL>
+          设置首次重试前的初始等待时间（单位：毫秒），后续重试时间按指数增长（范围：50-300000）[默认：500]
+      --retry-max-interval <RETRY_MAX_INTERVAL>
+          设置重试之间的最大等待时间（单位：毫秒），用于限制指数回退（范围：50-300000）[默认：10000]
+      --enable-cache
+          启用基于磁盘的持久化缓存，用于加速相同 LLM 请求的响应
+      --cache-dir <CACHE_DIR>
+          设置缓存数据的存储目录路径（格式：路径/到/缓存）[默认：./cache]
+      --cache-ttl <CACHE_TTL>
+          设置缓存响应的过期时间（单位：毫秒），过期后将被移除（范围：30000-86400000）[默认：30000]
+      --cache-max-entries <CACHE_MAX_ENTRIES>
+          设置缓存的最大条目数，达到上限后将移除最旧的条目（范围：3000-1000000）[默认：65535]
+      --disable-think-filter
+          禁用从模型响应中移除 <think>...</think> 标签的功能（默认启用）
+      --enable-shared-mode
+          启用单一 API Key 模式，覆盖客户端单独认证
+      --api-key <API_KEY>
+          设置共享模式下所有请求使用的全局 API Key
+      --enable-luajit
+          启用 LuaJIT 运行时，用于自定义请求/响应处理
+      --luajit-instances-power <LUAJIT_INSTANCES_POWER>
+          设置 LuaJIT 线程池大小的 2 的幂次方，例如 3 表示 2^3=8 个线程（范围：1-8）[默认：1]
+      --luajit-script <LUAJIT_SCRIPT>
+          设置自定义处理 Lua 脚本文件的路径（启用 LuaJIT 时必填）[默认：./plugin.lua]
+      --luajit-package-path <LUAJIT_PACKAGE_PATH>
+          设置自定义 Lua 模块搜索路径（格式：'./lua/?.lua;./lua/?/init.lua'）
+      --luajit-package-cpath <LUAJIT_PACKAGE_CPATH>
+          设置自定义 Lua C 模块搜索路径（格式：'./lua/?.so;./lua/loadall.so'）
+      --enable-async-request
+          启用异步请求模式，请求立即返回，处理在后台继续
+  -h, --help
+          打印帮助信息
+  -V, --version
+          打印版本信息
+```
+
 _注：实际性能提升因使用场景和配置而异。欢迎留言反馈问题和改进建议。_
 
 ## 📦 中间件
