@@ -11,7 +11,7 @@
 
 DeepSeek-Ollama Bridge 是一款面向多模型场景的高性能代理服务，全面支持 DeepSeek、QWen、GPT4o、Gemini、Claude 等主流大语言模型，助力 AI 应用性能提升。
 
-本服务基于 OpenAI API 规范构建，集成高效缓存系统，提供共享 API Key 管理功能，支持 LuaJIT 运行时环境，并可通过自定义 Lua 脚本实现功能扩展。在安全性、性能表现及易用性等方面，为 AI 应用提供全方位优化支持。
+本服务基于 OpenAI API 规范构建，集成高效缓存系统，提供共享 API Key 设置功能，支持 LuaJIT 运行时环境，并可通过自定义 Lua 脚本实现功能扩展。在安全性、性能表现及易用性等方面，为 AI 应用提供全方位优化支持。
 
 ### 🎁 核心特性
 
@@ -136,7 +136,7 @@ deepseek-ollama-bridge --enable-cache --cache-dir ./cache
 
 _注：实际性能提升因使用场景和配置而异。欢迎留言反馈问题和改进建议。_
 
-## �� 中间件
+## 📦 中间件
 
 从 **v0.1.16** 版本开始，支持 LuaJIT 运行时，支持自定义 Lua 脚本扩展系统功能。
 
