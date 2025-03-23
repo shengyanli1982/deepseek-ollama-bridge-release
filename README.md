@@ -2,14 +2,16 @@
 
 ## 😫 你是否遇到过这些烦恼？
 
--   DeepSeek 模型本地部署后重复计算相同问题，算力资源严重浪费
+-   大语言模型本地部署后重复计算相同问题，算力资源严重浪费
 -   高并发场景下系统不稳定，响应延迟大幅波动
 -   模型输出夹杂思考标签，影响对话体验
 -   服务器资源告急，性能调优无从下手
 
 ## 🎯 解决方案来了！
 
-DeepSeek-Ollama Bridge 是一款专为 DeepSeek 模型打造的高性能代理（Proxy）服务，让您的 AI 应用如虎添翼！
+DeepSeek-Ollama Bridge 是一款面向多模型场景的高性能代理服务，全面支持 DeepSeek、QWen、GPT4o、Gemini、Claude 等主流大语言模型，助力 AI 应用性能提升。
+
+本服务基于 OpenAI API 规范构建，集成高效缓存系统，提供共享 API Key 管理功能，支持 LuaJIT 运行时环境，并可通过自定义 Lua 脚本实现功能扩展。在安全性、性能表现及易用性等方面，为 AI 应用提供全方位优化支持。
 
 ### 🎁 核心特性
 
@@ -36,7 +38,7 @@ DeepSeek-Ollama Bridge 是一款专为 DeepSeek 模型打造的高性能代理�
 
 #### 4️ 智能思考标签过滤
 
--   专为 DeepSeek 蒸馏模型优化的思考标签过滤系统
+-   支持 DeepSeek、QWen、LLAMA 等主流模型的思考标签过滤系统
 -   自动识别并移除模型输出中的思考过程标记
 -   保持输出内容的专业性和连贯性
 -   零延迟处理，不影响模型响应速度
@@ -53,7 +55,7 @@ DeepSeek-Ollama Bridge 是一款专为 DeepSeek 模型打造的高性能代理�
 
 ### 💪 为什么选择 DeepSeek-Ollama Bridge ？
 
--   为 DeepSeek 模型优化，同时兼容其他 OpenAI API 规范的模型
+-   支持 DeepSeek、QWen、GPT4o、Gemini、Claude 等主流大语言模型
 -   开箱即用，可以零配置启动
 -   显著提升响应速度，降低计算成本
 -   自动过滤思考标签（专门针对 DeepSeek 蒸馏模型），输出更清晰专业
@@ -134,7 +136,7 @@ deepseek-ollama-bridge --enable-cache --cache-dir ./cache
 
 _注：实际性能提升因使用场景和配置而异。欢迎留言反馈问题和改进建议。_
 
-## 📦 中间件
+## �� 中间件
 
 从 **v0.1.16** 版本开始，支持 LuaJIT 运行时，支持自定义 Lua 脚本扩展系统功能。
 
