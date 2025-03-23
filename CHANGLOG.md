@@ -2,6 +2,13 @@
 
 ## 0.1.16 版本
 
+### 0.1.16-rc5
+
+-   增加异步请求支持
+-   增加异步请求的幂等性支持
+-   增加异步请求的缓存支持
+-   增加异步请求的限流支持
+
 ### 0.1.16-rc4
 
 -   修正 `ollama_request_errors_total` 和 `ollama_request_retry_attempts_total` 的计算方法

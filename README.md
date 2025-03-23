@@ -53,6 +53,14 @@ DeepSeek-Ollama Bridge 是一款面向多模型场景的高性能代理服务，
 -   支持自定义 Lua 脚本扩展系统功能
 -   毫秒级响应，适用于实时处理场景
 
+#### 7️ 异步请求支持（从 v0.1.16 版本开始）
+
+-   支持异步请求处理，提升系统吞吐量
+-   请求对象需包含 `request_fingerprint` 字段，用于结果提取
+-   自动重试机制，确保请求可靠性
+-   幂等性支持，防止重复处理
+-   结果缓存机制，提升后续请求响应速度
+
 ### 💪 为什么选择 DeepSeek-Ollama Bridge ？
 
 -   支持 DeepSeek、QWen、GPT4o、Gemini、Claude 等主流大语言模型
@@ -123,6 +131,16 @@ DeepSeek-Ollama Bridge 是一款面向多模型场景的高性能代理服务，
 #### 6. 请求后端服务 Retry
 
 ![请求后端服务 Retry](./images/http-request-retry.png)
+
+#### 7. 异步请求
+
+请求对象结构体需要包含 `request_fingerprint` 字段，用于后期作为提取异步结果的依据。
+
+![异步请求](./images/async-request.png)
+
+#### 8. 异步请求（幂等性）
+
+![异步请求（幂等性）](./images/async-request-idempotent.png)
 
 ## 🎁 快速开始
 
