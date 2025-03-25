@@ -134,13 +134,17 @@ DeepSeek-Ollama Bridge 是一款面向多模型场景的高性能代理服务，
 
 #### 7. 异步请求
 
-请求对象结构体中需包含 `request_fingerprint` 字段，该字段将作为后续提取异步结果的唯一标识。在异步结果未返回前，系统将返回 HTTP 469 状态码。
+请求对象结构体中需包含 `request_fingerprint` 字段，该字段将作为后续提取异步结果的唯一标识。在异步结果未返回前，系统将返回 HTTP 202 (Accepted) 状态码。
+
+v0.1.16-rc7 之后版本使用 HTTP 202 (Accepted) 状态码，之前使用 HTTP 469 状态码。
 
 ![异步请求](./images/async-request.png)
 
 #### 8. 异步请求（幂等性）
 
-在异步结果未返回前，若发起相同内容的请求，系统将触发幂等性机制，并返回 HTTP 469 状态码。
+在异步结果未返回前，若发起相同内容的请求，系统将触发幂等性机制，并返回 HTTP 202 (Accepted) 状态码。
+
+v0.1.16-rc7 之后版本使用 HTTP 202 (Accepted) 状态码，之前使用 HTTP 469 状态码。
 
 ![异步请求（幂等性）](./images/async-request-idempotent.png)
 
