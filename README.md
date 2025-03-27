@@ -1,5 +1,9 @@
 # 🚀 DeepSeek-Ollama Bridge：让你的 AI 对话更快、更稳、更省心！
 
+<div align="center">
+	<img src="./images/logo.png" alt="logo">
+</div>
+
 ## 😫 你是否遇到过这些烦恼？
 
 -   大语言模型本地部署后重复计算相同问题，算力资源严重浪费
