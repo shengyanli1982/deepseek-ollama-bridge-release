@@ -1,6 +1,6 @@
-# 🚀 DeepSeek-Ollama Bridge：让你的 AI 对话更快、更稳、更省心！
-
 <div align="center">
+    <h1>DeepSeek-Ollama Bridge</h1>
+    <h3> 🚀 让你的 AI 对话更快、更稳、更省心！</h3>
 	<img src="./images/logo.png" alt="logo">
 </div>
 
